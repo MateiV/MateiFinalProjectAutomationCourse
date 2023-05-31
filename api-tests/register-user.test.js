@@ -11,7 +11,7 @@ describe("Register a new user test suite", () => {
 
   it("create new user test", async () => {
     const requestBody = {
-      name: "TesterulTester121",
+      name: faker.internet.userName(),
       email: faker.internet.email(),
       password: faker.internet.password(),
     };

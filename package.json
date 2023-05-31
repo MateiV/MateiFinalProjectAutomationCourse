@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npx mocha api-tests --reporter mochawesome --reporter-options reportDir=customReportDir,reportFilename=api-results --timeout 1000"
+    "cy:open": "npx cypress open",
+    "test": "npx mocha api-tests --reporter mochawesome --reporter-options reportDir=customReportDir,reportFilename=api-results --timeout 10000"
   },
   "author": "",
   "license": "ISC",
