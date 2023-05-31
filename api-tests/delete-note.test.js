@@ -18,10 +18,10 @@ const newEmail = faker.internet.email();
 
 describe("Delete Note Endpoint Scenarios", () => {
   before(async () => {
-
     request.setDefaultTimeout(5000);
-    console.log("Starting the execution of the DELETE Notes endpoint test suite");
-
+    console.log(
+      "Starting the execution of the DELETE Notes endpoint test suite"
+    );
 
     console.log("Registering a new user");
     const requestBody = {
@@ -29,7 +29,7 @@ describe("Delete Note Endpoint Scenarios", () => {
       email: newEmail,
       password: newPassword,
     };
-    
+
     await spec()
       .post(`${baseURL}/users/register`)
       .withHeaders("Content-Type", "application/json")
@@ -51,7 +51,6 @@ describe("Delete Note Endpoint Scenarios", () => {
       .withBody(loginRequestBody)
       .expectStatus(200)
       .expectBodyContains("Login successful");
-    
 
     authToken = login.body.data.token;
 
@@ -62,12 +61,13 @@ describe("Delete Note Endpoint Scenarios", () => {
       description: noteDescription,
       category: "Work",
     };
-    
+
     let newNote = await spec()
       .post(`${baseURL}/notes`)
       .withHeaders({
         "x-auth-token": `${authToken}`,
-        "Content-Type": "application/json"})
+        "Content-Type": "application/json",
+      })
       .withBody(newNoteRequestBody)
       .expectStatus(200)
       .expectBodyContains("Note successfully created");
@@ -81,12 +81,13 @@ describe("Delete Note Endpoint Scenarios", () => {
       description: noteDescription,
       category: "Work",
     };
-    
+
     await spec()
       .delete(`${baseURL}/notes/${createdNote}`)
       .withHeaders({
         "x-auth-token": `${authToken}`,
-        "Content-Type": "application/json"})
+        "Content-Type": "application/json",
+      })
       .expectBodyContains("Note successfully deleted")
       .expectStatus(200);
   });
