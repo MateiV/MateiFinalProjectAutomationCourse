@@ -24,7 +24,7 @@ describe("Register a new user test suite", () => {
       .expectBodyContains("User account created");
   });
 
-  it("create new post test", async () => {
+  it("user registration error test", async () => {
     const requestBody = {
       email: "tester.test22@test.com",
       password: "testing123451!",

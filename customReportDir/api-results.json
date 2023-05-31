@@ -5,9 +5,9 @@
     "passes": 6,
     "pending": 0,
     "failures": 0,
-    "start": "2023-05-31T12:38:56.892Z",
-    "end": "2023-05-31T12:38:59.581Z",
-    "duration": 2689,
+    "start": "2023-05-31T14:29:08.104Z",
+    "end": "2023-05-31T14:29:10.673Z",
+    "duration": 2569,
     "testsRegistered": 6,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,7 +18,7 @@
   },
   "results": [
     {
-      "uuid": "a92ef67e-5781-4a5a-b3f8-a821a59a5e65",
+      "uuid": "92a92662-e267-45fa-9d9e-18aae7982a26",
       "title": "",
       "fullFile": "",
       "file": "",
@@ -27,7 +27,7 @@
       "tests": [],
       "suites": [
         {
-          "uuid": "485f117f-4bb2-4b3d-bd74-f2a6d780a7d6",
+          "uuid": "dac5298f-3376-44bc-aaf5-11a238484183",
           "title": "Create new notes test suite",
           "fullFile": "C:\\Users\\vladm\\Desktop\\4mayo\\ProiectMateiV\\api-tests\\create-new-note.test.js",
           "file": "\\api-tests\\create-new-note.test.js",
@@ -36,7 +36,7 @@
               "title": "\"before all\" hook in \"Create new notes test suite\"",
               "fullTitle": "Create new notes test suite \"before all\" hook in \"Create new notes test suite\"",
               "timedOut": false,
-              "duration": 0,
+              "duration": 1,
               "state": null,
               "speed": null,
               "pass": false,
@@ -45,8 +45,8 @@
               "context": null,
               "code": "request.setDefaultTimeout(5000);\nconsole.log(\"Starting the execution of the CREATE NEW NOTE test suite\");",
               "err": {},
-              "uuid": "a9c52eab-aaf4-4e85-929f-9f91614251b8",
-              "parentUUID": "485f117f-4bb2-4b3d-bd74-f2a6d780a7d6",
+              "uuid": "4b356667-00b1-4dfa-a123-781cb13ba6bf",
+              "parentUUID": "dac5298f-3376-44bc-aaf5-11a238484183",
               "isHook": true,
               "skipped": false
             }
@@ -57,7 +57,7 @@
               "title": "create a new work note test",
               "fullTitle": "Create new notes test suite create a new work note test",
               "timedOut": false,
-              "duration": 433,
+              "duration": 361,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -66,26 +66,26 @@
               "context": null,
               "code": "const requestBody = {\n  title: faker.animal.bear(),\n  description: faker.animal.bird(),\n  category: \"Work\",\n};\nawait spec()\n  .post(`${baseURL}/notes`)\n  .withHeaders(\n    \"x-auth-token\",\n    \"6a63b75236d844eba2d7644a44ce339b36fc3f68353a4a7ab72dfd5a3a9f103e\",\n    \"Content-Type\",\n    \"application/json\"\n  )\n  .withBody(requestBody)\n  .expectStatus(200)\n  .expectResponseTime(3000)\n  .expectBodyContains(\"Note successfully created\");",
               "err": {},
-              "uuid": "8ed023e2-471f-4184-a4c2-b6ba087ed729",
-              "parentUUID": "485f117f-4bb2-4b3d-bd74-f2a6d780a7d6",
+              "uuid": "1820392d-5321-44a5-a719-3ec3e4b1de92",
+              "parentUUID": "dac5298f-3376-44bc-aaf5-11a238484183",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "8ed023e2-471f-4184-a4c2-b6ba087ed729"
+            "1820392d-5321-44a5-a719-3ec3e4b1de92"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 433,
+          "duration": 361,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "e02a4b0f-ab70-4bdf-ad5c-98a4a7400c1b",
+          "uuid": "bceb9f4c-ec42-400e-9df3-abe04417ccf3",
           "title": "Delete Note Endpoint Scenarios",
           "fullFile": "C:\\Users\\vladm\\Desktop\\4mayo\\ProiectMateiV\\api-tests\\delete-note.test.js",
           "file": "\\api-tests\\delete-note.test.js",
@@ -94,17 +94,17 @@
               "title": "\"before all\" hook in \"Delete Note Endpoint Scenarios\"",
               "fullTitle": "Delete Note Endpoint Scenarios \"before all\" hook in \"Delete Note Endpoint Scenarios\"",
               "timedOut": false,
-              "duration": 1043,
+              "duration": 997,
               "state": null,
               "speed": null,
               "pass": false,
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "request.setDefaultTimeout(5000);\n    console.log(\"Starting the execution of the DELETE Notes endpoint test suite\");\n    registerRequestBody = {\n      name: `${newUsername}`,\n      email: `${newEmail}`,\n      password: `${newPassword}`,\n    };\n    await spec()\n      .post(`${baseURL}/users/register`)\n      .withHeaders(\"Content-Type\", \"application/json\")\n      .withBody(registerRequestBody)\n    .expectBodyContains(\"User account created successfully\")\n    .expectStatus(201);\n    loginRequestBody = {\n      email: `${newEmail}`,\n      password: `${newPassword}`,\n    };\n    let login = await spec()\n      .post(`${baseURL}/users/login`)\n      .withHeaders(\"Content-Type\", \"application/json\")\n      .withBody(loginRequestBody)\n    .expectBodyContains(\"Login successful\")\n    .expectStatus(200);\n    authToken = login.body.data.token;\n    newNoteRequestBody = {\n      title: \"TestingTesting\",\n      description: \"Testing1234!\",\n      category: \"Work\",\n    };\n    \n    let newNote = await spec()\n      .post(`${baseURL}/notes`)\n      .withHeaders({\n        \"x-auth-token\": `${authToken}`,\n        \"Content-Type\": \"application/json\"})\n      .withBody(newNoteRequestBody)\n      .expectBodyContains(\"Note successfully created\")\n      .expectStatus(200);\n    createdNote = newNote.body.data.id;",
+              "code": "request.setDefaultTimeout(5000);\n    console.log(\"Starting the execution of the DELETE Notes endpoint test suite\");\n    console.log(\"Registering a new user\");\n    const requestBody = {\n      name: newUsername,\n      email: newEmail,\n      password: newPassword,\n    };\n    \n    await spec()\n      .post(`${baseURL}/users/register`)\n      .withHeaders(\"Content-Type\", \"application/json\")\n      .withBody(requestBody)\n      .expectStatus(201)\n      .expectResponseTime(3000)\n      .expectBodyContains(\"User account created\");\n    console.log(\"Logging in with the new user\");\n    loginRequestBody = {\n      email: `${newEmail}`,\n      password: `${newPassword}`,\n    };\n    let login = await spec()\n      .post(`${baseURL}/users/login`)\n      .withHeaders(\"Content-Type\", \"application/json\")\n      .withBody(loginRequestBody)\n      .expectStatus(200)\n      .expectBodyContains(\"Login successful\");\n    \n    authToken = login.body.data.token;\n    console.log(\"Create a new work note\");\n    newNoteRequestBody = {\n      title: noteTitle,\n      description: noteDescription,\n      category: \"Work\",\n    };\n    \n    let newNote = await spec()\n      .post(`${baseURL}/notes`)\n      .withHeaders({\n        \"x-auth-token\": `${authToken}`,\n        \"Content-Type\": \"application/json\"})\n      .withBody(newNoteRequestBody)\n      .expectStatus(200)\n      .expectBodyContains(\"Note successfully created\");\n    createdNote = newNote.body.data.id;",
               "err": {},
-              "uuid": "c9f7bf72-9c97-499b-b548-a2406eda7616",
-              "parentUUID": "e02a4b0f-ab70-4bdf-ad5c-98a4a7400c1b",
+              "uuid": "4a43d429-2cd7-4a53-b9e4-5a33a2664591",
+              "parentUUID": "bceb9f4c-ec42-400e-9df3-abe04417ccf3",
               "isHook": true,
               "skipped": false
             }
@@ -122,17 +122,17 @@
               "fail": false,
               "pending": false,
               "context": null,
-              "code": "requestBody = {\n  title: \"TestingTesting\",\n  description: \"Testing1234!\",\n  category: \"Work\",\n};\n\nawait spec()\n  .delete(`${baseURL}/notes/${createdNote}`)\n  .withHeaders({\n    \"x-auth-token\": `${authToken}`,\n    \"Content-Type\": \"application/json\"})\n  .expectBodyContains(\"Note successfully deleted\")\n  .expectStatus(200);",
+              "code": "requestBody = {\n  title: noteTitle,\n  description: noteDescription,\n  category: \"Work\",\n};\n\nawait spec()\n  .delete(`${baseURL}/notes/${createdNote}`)\n  .withHeaders({\n    \"x-auth-token\": `${authToken}`,\n    \"Content-Type\": \"application/json\"})\n  .expectBodyContains(\"Note successfully deleted\")\n  .expectStatus(200);",
               "err": {},
-              "uuid": "a255a98d-c4c0-4cfb-8bed-2bf129960418",
-              "parentUUID": "e02a4b0f-ab70-4bdf-ad5c-98a4a7400c1b",
+              "uuid": "a3439d73-614e-46ba-b2bb-c5dec5bc3ac4",
+              "parentUUID": "bceb9f4c-ec42-400e-9df3-abe04417ccf3",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "a255a98d-c4c0-4cfb-8bed-2bf129960418"
+            "a3439d73-614e-46ba-b2bb-c5dec5bc3ac4"
           ],
           "failures": [],
           "pending": [],
@@ -143,7 +143,7 @@
           "_timeout": 10000
         },
         {
-          "uuid": "c99aead7-e7ae-4dc0-8919-0c270ed91e2c",
+          "uuid": "3213c07b-c4ec-4cf7-b8b9-f3f284d649d1",
           "title": "Get Notes test suite",
           "fullFile": "C:\\Users\\vladm\\Desktop\\4mayo\\ProiectMateiV\\api-tests\\get-all-notes.test.js",
           "file": "\\api-tests\\get-all-notes.test.js",
@@ -161,8 +161,8 @@
               "context": null,
               "code": "request.setDefaultTimeout(5000);\nconsole.log(\"Starting the execution of the GET ALL NOTE test suite\");",
               "err": {},
-              "uuid": "8edf7af9-983c-483e-ac0e-efdfd949c625",
-              "parentUUID": "c99aead7-e7ae-4dc0-8919-0c270ed91e2c",
+              "uuid": "545f09a7-eb1e-4669-ae3a-c39e00a054e3",
+              "parentUUID": "3213c07b-c4ec-4cf7-b8b9-f3f284d649d1",
               "isHook": true,
               "skipped": false
             }
@@ -173,7 +173,7 @@
               "title": "Get all notes test",
               "fullTitle": "Get Notes test suite Get all notes test",
               "timedOut": false,
-              "duration": 233,
+              "duration": 244,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -182,26 +182,26 @@
               "context": null,
               "code": "await spec()\n  .get(`${baseURL}/notes`)\n  .withHeaders(\n    \"x-auth-token\",\n    \"6a63b75236d844eba2d7644a44ce339b36fc3f68353a4a7ab72dfd5a3a9f103e\",\n    \"Content-Type\",\n    \"application/json\"\n  )\n  .expectStatus(200)\n  .expectResponseTime(3000)\n  .expectBodyContains(\"Notes successfully retrieved\")\n  .expectJsonSchema(getNotesSchema);",
               "err": {},
-              "uuid": "f7e40dd1-f760-4f2c-be89-33411afb417d",
-              "parentUUID": "c99aead7-e7ae-4dc0-8919-0c270ed91e2c",
+              "uuid": "f1430a45-56b3-46ee-a878-4e2887d41488",
+              "parentUUID": "3213c07b-c4ec-4cf7-b8b9-f3f284d649d1",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "f7e40dd1-f760-4f2c-be89-33411afb417d"
+            "f1430a45-56b3-46ee-a878-4e2887d41488"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 233,
+          "duration": 244,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "9fa3ccac-e465-4526-98ac-cc8735cc5f39",
+          "uuid": "dd9a1c35-5055-425d-91e7-685f80b948b9",
           "title": "Login an existing user test suite",
           "fullFile": "C:\\Users\\vladm\\Desktop\\4mayo\\ProiectMateiV\\api-tests\\login-user.test.js",
           "file": "\\api-tests\\login-user.test.js",
@@ -210,7 +210,7 @@
               "title": "\"before all\" hook in \"Login an existing user test suite\"",
               "fullTitle": "Login an existing user test suite \"before all\" hook in \"Login an existing user test suite\"",
               "timedOut": false,
-              "duration": 0,
+              "duration": 1,
               "state": null,
               "speed": null,
               "pass": false,
@@ -219,8 +219,8 @@
               "context": null,
               "code": "request.setDefaultTimeout(5000);\nconsole.log(\"Starting the execution of the LOGIN test suite\");",
               "err": {},
-              "uuid": "a91ce2e8-22c6-43e5-a917-16ca551d0325",
-              "parentUUID": "9fa3ccac-e465-4526-98ac-cc8735cc5f39",
+              "uuid": "53c0bd3c-8d44-4c52-af37-28edfdd5e07e",
+              "parentUUID": "dd9a1c35-5055-425d-91e7-685f80b948b9",
               "isHook": true,
               "skipped": false
             }
@@ -231,7 +231,7 @@
               "title": "login an existing user test",
               "fullTitle": "Login an existing user test suite login an existing user test",
               "timedOut": false,
-              "duration": 298,
+              "duration": 290,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -240,26 +240,26 @@
               "context": null,
               "code": "const requestBody = {\n  name: \"JohnTest\",\n  email: \"teste1r.test22@test.com\",\n  password: \"testing123451!\",\n};\nawait spec()\n  .post(`${baseURL}/users/login`)\n  .withHeaders(\"Content-Type\", \"application/json\")\n  .withBody(requestBody)\n  .expectStatus(200)\n  .expectResponseTime(3000)\n  .expectBodyContains(\"Login successful\");",
               "err": {},
-              "uuid": "d6438604-e477-4f1d-892e-d566317c97fa",
-              "parentUUID": "9fa3ccac-e465-4526-98ac-cc8735cc5f39",
+              "uuid": "9bac028e-82f3-4bb8-810e-a724304a67d6",
+              "parentUUID": "dd9a1c35-5055-425d-91e7-685f80b948b9",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "d6438604-e477-4f1d-892e-d566317c97fa"
+            "9bac028e-82f3-4bb8-810e-a724304a67d6"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 298,
+          "duration": 290,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
         },
         {
-          "uuid": "b39c7cf0-9828-43dc-ab02-a527b391def7",
+          "uuid": "1ad6b3b9-7c10-4017-85e5-4bdf77e83ef0",
           "title": "Register a new user test suite",
           "fullFile": "C:\\Users\\vladm\\Desktop\\4mayo\\ProiectMateiV\\api-tests\\register-user.test.js",
           "file": "\\api-tests\\register-user.test.js",
@@ -277,8 +277,8 @@
               "context": null,
               "code": "request.setDefaultTimeout(5000);\nconsole.log(\"Starting the execution of the REGISTER test suite\");",
               "err": {},
-              "uuid": "9e7e34ad-40f0-4510-b237-56fa30fa1b86",
-              "parentUUID": "b39c7cf0-9828-43dc-ab02-a527b391def7",
+              "uuid": "c69cf156-46c5-45db-9071-4ba1458309a5",
+              "parentUUID": "1ad6b3b9-7c10-4017-85e5-4bdf77e83ef0",
               "isHook": true,
               "skipped": false
             }
@@ -289,7 +289,7 @@
               "title": "create new user test",
               "fullTitle": "Register a new user test suite create new user test",
               "timedOut": false,
-              "duration": 324,
+              "duration": 318,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -298,16 +298,16 @@
               "context": null,
               "code": "const requestBody = {\n  name: faker.internet.userName(),\n  email: faker.internet.email(),\n  password: faker.internet.password(),\n};\nawait spec()\n  .post(`${baseURL}/users/register`)\n  .withHeaders(\"Content-Type\", \"application/json\")\n  .withBody(requestBody)\n  .expectStatus(201)\n  .expectResponseTime(3000)\n  .expectBodyContains(\"User account created\");",
               "err": {},
-              "uuid": "323a0042-3d9e-4bcc-a800-51b55867869b",
-              "parentUUID": "b39c7cf0-9828-43dc-ab02-a527b391def7",
+              "uuid": "61ad6191-0828-4d2f-8f46-5427199e2ff6",
+              "parentUUID": "1ad6b3b9-7c10-4017-85e5-4bdf77e83ef0",
               "isHook": false,
               "skipped": false
             },
             {
-              "title": "create new post test",
-              "fullTitle": "Register a new user test suite create new post test",
+              "title": "user registration error test",
+              "fullTitle": "Register a new user test suite user registration error test",
               "timedOut": false,
-              "duration": 46,
+              "duration": 47,
               "state": "passed",
               "speed": "medium",
               "pass": true,
@@ -316,21 +316,21 @@
               "context": null,
               "code": "const requestBody = {\n  email: \"tester.test22@test.com\",\n  password: \"testing123451!\",\n};\nawait spec()\n  .post(`${baseURL}/users/register`)\n  .withHeaders(\"Content-Type\", \"application/json\")\n  .withBody(requestBody)\n  .expectStatus(400)\n  .expectResponseTime(3000)\n  .expectBodyContains(\"User name must be between 4 and 30 characters\");",
               "err": {},
-              "uuid": "10e7fcdf-7a6e-4cce-acbc-af7a60aee329",
-              "parentUUID": "b39c7cf0-9828-43dc-ab02-a527b391def7",
+              "uuid": "df9ec967-7110-4864-8ff8-7e5680c3a9ee",
+              "parentUUID": "1ad6b3b9-7c10-4017-85e5-4bdf77e83ef0",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "323a0042-3d9e-4bcc-a800-51b55867869b",
-            "10e7fcdf-7a6e-4cce-acbc-af7a60aee329"
+            "61ad6191-0828-4d2f-8f46-5427199e2ff6",
+            "df9ec967-7110-4864-8ff8-7e5680c3a9ee"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 370,
+          "duration": 365,
           "root": false,
           "rootEmpty": false,
           "_timeout": 10000
